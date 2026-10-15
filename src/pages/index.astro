@@ -1,13 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Button from '@/components/Button.astro';
-import WorkRow from '@/components/WorkRow.astro';
-import SectionHeading from '@/components/SectionHeading.astro';
-import { SITE } from '@/site.config';
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import WorkRow from "@/components/WorkRow.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { SITE } from "@/site.config";
 
-const allWork = await getCollection('work', ({ data }) => !data.draft);
-const sorted = [...allWork].sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const allWork = await getCollection("work", ({ data }) => !data.draft);
+const sorted = [...allWork].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 const featured = sorted.filter((entry) => entry.data.featured);
 const rest = sorted.filter((entry) => !entry.data.featured);
 const selected = [...featured, ...rest].slice(0, 5);
@@ -15,17 +17,22 @@ const selected = [...featured, ...rest].slice(0, 5);
 
 <BaseLayout title={SITE.name}>
   <section class="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
-    <p class="text-ink-soft mb-6 inline-flex items-center gap-2 font-mono text-xs">
-      <span class="bg-signal h-1.5 w-1.5 rounded-full" aria-hidden="true"></span>
+    <p
+      class="text-ink-soft mb-6 inline-flex items-center gap-2 font-mono text-xs"
+    >
+      <span class="bg-signal h-1.5 w-1.5 rounded-full" aria-hidden="true">
+      </span>
       {SITE.status}
     </p>
 
-    <h1 class="font-display text-ink max-w-2xl text-4xl leading-[1.1] font-medium sm:text-5xl">
+    <h1
+      class="font-display text-ink max-w-2xl text-4xl leading-[1.1] font-medium sm:text-5xl"
+    >
       {SITE.tagline}
     </h1>
 
     <p class="text-ink-soft mt-6 max-w-md">
-      {SITE.role} — based on the work below, not a list of buzzwords.
+      {SITE.role} — happy customers every day
     </p>
 
     <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -58,21 +65,103 @@ const selected = [...featured, ...rest].slice(0, 5);
     <p class="text-ink-soft max-w-xl">
       {SITE.description}
     </p>
-    <a href="/about" class="text-signal mt-4 inline-block font-mono text-xs hover:underline">
+    <a
+      href="/about"
+      class="text-signal mt-4 inline-block font-mono text-xs hover:underline"
+    >
       More about how I work →
     </a>
   </section>
+  <section id="contact" class="mx-auto max-w-5xl px-6 pb-24">
+    <SectionHeading eyebrow="Come through" />
 
+    <div
+      class="mt-8 grid gap-10 rounded-2xl border border-ink/10 bg-ink/[0.03] p-6 sm:p-10 md:grid-cols-2 md:gap-12"
+    >
+      <div>
+        <p class="font-display text-ink text-3xl sm:text-4xl">
+          Your next cut is waiting.
+        </p>
+
+        <p class="mt-4 max-w-md leading-relaxed text-ink/70">
+          Stop by Barbershop 26 in North Hollywood for a fresh cut, good
+          conversation, and a friendly neighborhood vibe. Walk-ins are welcome!
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="https://maps.app.goo.gl/FQdhMzNbD8fxt1U56"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-full bg-grey px-5 py-3 text-sm font-medium transition hover:opacity-80"
+          >
+            Get directions ↗
+          </a>
+
+          <a
+            href="tel:+18182100157"
+            class="inline-flex items-center rounded-full border border-ink/20 px-5 py-3 text-sm font-medium text-ink transition hover:bg-ink/5"
+          >
+            Call the shop
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6 md:border-l md:border-ink/10 md:pl-10">
+        <div>
+          <p
+            class="text-xs font-semibold uppercase tracking-widest text-ink/50"
+          >
+            Find us
+          </p>
+          <p class="mt-2 font-medium text-ink">Barbershop 26</p>
+          <p class="mt-1 leading-relaxed text-ink/70">
+            12456 Oxnard St<br />
+            North Hollywood, CA 91606
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="text-xs font-semibold uppercase tracking-widest text-ink/50"
+          >
+            Shop hours
+          </p>
+          <div class="mt-2 space-y-1 text-sm text-ink/70">
+            <div class="flex justify-between gap-4">
+              <span>Sunday – Thursday</span>
+              <span class="whitespace-nowrap">10 AM – 8 PM</span>
+            </div>
+            <div class="flex justify-between gap-4">
+              <span>Friday</span>
+              <span class="whitespace-nowrap">10 AM – 2 PM</span>
+            </div>
+            <div class="flex justify-between gap-4">
+              <span>Saturday · שבת</span>
+              <span class="whitespace-nowrap">Closed</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm text-ink/60">
+          Walk-ins welcome · Appointments recommended
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!--
   <section id="contact" class="mx-auto max-w-3xl px-6 pb-24">
     <SectionHeading eyebrow="Let's talk" />
     <p class="font-display text-ink max-w-lg text-2xl sm:text-3xl">
-      Have something worth building?
+      Come visit us!
     </p>
-    <a
-      href={`mailto:${SITE.email}`}
-      class="text-signal mt-4 inline-flex items-center gap-2 font-mono hover:underline"
-    >
-      {SITE.email}
-    </a>
-  </section>
+    <p>12456 Oxnard St, North Hollywood, CA 91606</p>
+    <p>+1 (818) 210 0157</p>
+    <p>
+      <a href="https://maps.app.goo.gl/FQdhMzNbD8fxt1U56" target="_blank">
+        Google maps
+      </a>
+    </p>
+  </section> -->
 </BaseLayout>

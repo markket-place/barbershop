@@ -1,22 +1,20 @@
 // Edit this file to re-label the entire site. Header, Footer, the homepage
 // and SEO defaults all read from here instead of hardcoding copy.
 export const SITE = {
-  name: 'John Doe',
-  role: 'Product design & frontend engineering',
-  email: 'johndoe@example.com',
-  tagline: 'I design and build interfaces that hold up under real use.',
+  name: 'Barbershop 26',
+  role: 'where cuts meet style 💈',
+  email: '',
+  tagline: 'Good cuts. Great people. Neighborhood barbershop',
   description:
-    'Portfolio of John Doe — product design and frontend engineering, with an emphasis on speed, clarity, and the details most people skip.',
-  status: 'Currently building at Studio Co · open to new work, Q3 2026',
+    'Come by Barbershop 26 in North Hollywood for a classic cut, a fresh fade, or just a good conversation',
+  status: 'OPEN HOURS: Sunday - Thursday 10:00 AM - 8:00 PM. Friday 10:00 AM - 2:00 PM SAT CLOSED שבת',
   social: [
-    { label: 'GitHub', href: 'https://github.com/your-username' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-username' },
-    { label: 'X', href: 'https://x.com/your-username' },
+    { label: 'Instagram', href: 'https://www.instagram.com/barbershop_26__/' },
   ],
   locale: 'en',
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Work', href: '/work' },
+  { label: 'Services', href: '/work' },
   { label: 'About', href: '/about' },
 ] as const;

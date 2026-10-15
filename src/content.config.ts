@@ -15,8 +15,6 @@ const work = defineCollection({
       date: z.coerce.date(),
       tags: z.array(z.string()).default([]),
       cover: image().optional(),
-      url: z.url().optional(),
-      repo: z.url().optional(),
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
     }),
